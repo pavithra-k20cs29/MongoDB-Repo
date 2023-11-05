@@ -1,0 +1,397 @@
+test> db
+test
+test> show dbs
+admin     40.00 KiB
+config   108.00 KiB
+local     72.00 KiB
+mystore   72.00 KiB
+pavi      72.00 KiB
+test> use mystore
+switched to db mystore
+
+pavi> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+pavi> use task1
+switched to db task1
+
+task1> db.createCollection("student")
+{ ok: 1 }
+task1> db.student.insertOne({Name:'Sarah',Age:23,Score:98.20})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653395d61249ab48d6b15e45")
+}
+task1> db.student.find()
+[
+  {
+    _id: ObjectId("653395d61249ab48d6b15e45"),
+    Name: 'Sarah',
+    Age: 23,
+    Score: 98.2
+  }
+]
+
+task1>db.customer.insertOne({Customer_Id:10,First_Name:'Sarathy',Last_Name:'Kumar',dob:"20-03-2000",Address:"Coimbatore",phone_number:9090909090})
+{
+  acknowledged: true,
+  insertedId: ObjectId("653398d01249ab48d6b15e46")
+}
+task1> db.customer.find()
+[
+  {
+    _id: ObjectId("653398d01249ab48d6b15e46"),
+    Customer_Id: 10,
+    First_Name: 'Sarathy',
+    Last_Name: 'Kumar',
+    dob: '20-03-2000',
+    Address: 'Coimbatore',
+    phone_number: 9090909090
+  }
+]
+task1> db.createCollection("order_det")
+{ ok: 1 }
+task1> db.order_det.insertOne({OrderId:201,customerID:10,Order_datetime:"20-02-2023",Shipped_datetime:"20-03-2023 10:30:30",total_amount:200.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65339d391249ab48d6b15e47")
+}
+task1> show collections
+customer
+order_det
+student
+task1> db.order_det.find()
+[
+  {
+    _id: ObjectId("65339d391249ab48d6b15e47"),
+    OrderId: 201,
+    customerID: 10,
+    Order_datetime: '20-02-2023',
+    Shipped_datetime: '20-03-2023 10:30:30',
+    total_amount: 200.9
+  }
+]
+task1> db.student.find()
+[
+  {
+    _id: ObjectId("653395d61249ab48d6b15e45"),
+    Name: 'Sarah',
+    Age: 23,
+    Score: 98.2
+  }
+]
+task1> db.customer.find()
+[
+  {
+    _id: ObjectId("653398d01249ab48d6b15e46"),
+    Customer_Id: 10,
+    First_Name: 'Sarathy',
+    Last_Name: 'Kumar',
+    dob: '20-03-2000',
+    Address: 'Coimbatore',
+    phone_number: 9090909090
+  }
+]
+task1> db.student.insertOne({Name:'Pavi',Age:'20',Score:99.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65339fd41249ab48d6b15e48")
+}
+task1> db.student.insertOne({Name:'Diya',Age:'10',Score:96.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("65339fe31249ab48d6b15e49")
+}
+task1> db.student.insertOne({Name:'Malar',Age:'19',Score:86.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a0021249ab48d6b15e4a")
+}
+task1> db.student.insertOne({Name:'Kayal',Age:'29',Score:97.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a0171249ab48d6b15e4b")
+}
+task1> db.student.insertOne({Name:'Divya',Age:'18',Score:97.60})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a0291249ab48d6b15e4c")
+}
+
+task1> db.customer.insertOne({Customer_id:11,First_Name:'Partha',Last_Name:'sarathy',dob:'20-03-2000',Address:'Udumalpet',phone_number:8080808080})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a1fc1249ab48d6b15e4d")
+}
+task1> db.customer.insertOne({Customer_id:12,First_Name:'Sumithra',Last_Name:'Devi',dob:'20-04-2000',Address:'Karur',phone_number:7070707070})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a22b1249ab48d6b15e4e")
+}
+task1> db.customer.insertOne({Customer_id:13,First_Name:'Ashwith',Last_Name:'kumar',dob:'20-05-2000',Address:'Thirunelveli',phone_number:6060606060})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a2621249ab48d6b15e4f")
+}
+task1> db.customer.insertOne({Customer_id:14,First_Name:'Arun',Last_Name:'kumar',dob:'20-06-2000',Address:'coimbatore',phone_number:5050505050})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a28e1249ab48d6b15e50")
+}
+task1> db.customer.insertOne({Customer_id:15,First_Name:'Pavi',Last_Name:'naya',dob:'20-07-2000',Address:'Anaimalai',phone_number:4040404040})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a2ba1249ab48d6b15e51")
+}
+
+task1> db.order_det.insertOne({OrderId:202,customerID:11,Order_datetime:"20-01-2023",Shipped_datetime:"20-04-2023 10:40:30",total_amount:250.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a3071249ab48d6b15e52")
+}
+task1> db.order_det.insertOne({OrderId:203,customerID:12,Order_datetime:"20-02-2023",Shipped_datetime:"20-03-2023 12:40:30",total_amount:350.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a3221249ab48d6b15e53")
+}
+task1> db.order_det.insertOne({OrderId:204,customerID:13,Order_datetime:"20-04-2023",Shipped_datetime:"20-05-2023 12:00:30",total_amount:360.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a3491249ab48d6b15e54")
+}
+task1> db.order_det.insertOne({OrderId:205,customerID:14,Order_datetime:"20-06-2023",Shipped_datetime:"20-07-2023 09:00:30",total_amount:390.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a3711249ab48d6b15e55")
+}
+task1> db.order_det.insertOne({OrderId:206,customerID:15,Order_datetime:"26-06-2023",Shipped_datetime:"20-08-2023 09:00:40",total_amount:500.90})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a44a1249ab48d6b15e56")
+}
+
+task1> db.order_det.find().pretty();
+[
+  {
+    _id: ObjectId("65339d391249ab48d6b15e47"),
+    OrderId: 201,
+    customerID: 10,
+    Order_datetime: '20-02-2023',
+    Shipped_datetime: '20-03-2023 10:30:30',
+    total_amount: 200.9
+  },
+  {
+    _id: ObjectId("6533a3071249ab48d6b15e52"),
+    OrderId: 202,
+    customerID: 11,
+    Order_datetime: '20-01-2023',
+    Shipped_datetime: '20-04-2023 10:40:30',
+    total_amount: 250.9
+  },
+  {
+    _id: ObjectId("6533a3221249ab48d6b15e53"),
+    OrderId: 203,
+    customerID: 12,
+    Order_datetime: '20-02-2023',
+    Shipped_datetime: '20-03-2023 12:40:30',
+    total_amount: 350.9
+  },
+  {
+    _id: ObjectId("6533a3491249ab48d6b15e54"),
+    OrderId: 204,
+    customerID: 13,
+    Order_datetime: '20-04-2023',
+    Shipped_datetime: '20-05-2023 12:00:30',
+    total_amount: 360.9
+  },
+  {
+    _id: ObjectId("6533a3711249ab48d6b15e55"),
+    OrderId: 205,
+    customerID: 14,
+    Order_datetime: '20-06-2023',
+    Shipped_datetime: '20-07-2023 09:00:30',
+    total_amount: 390.9
+  },
+  {
+    _id: ObjectId("6533a44a1249ab48d6b15e56"),
+    OrderId: 206,
+    customerID: 15,
+    Order_datetime: '26-06-2023',
+    Shipped_datetime: '20-08-2023 09:00:40',
+    total_amount: 500.9
+  }
+]
+task1> db.customer.find().pretty();
+[
+  {
+    _id: ObjectId("653398d01249ab48d6b15e46"),
+    Customer_Id: 10,
+    First_Name: 'Sarathy',
+    Last_Name: 'Kumar',
+    dob: '20-03-2000',
+    Address: 'Coimbatore',
+    phone_number: 9090909090
+  },
+  {
+    _id: ObjectId("6533a1fc1249ab48d6b15e4d"),
+    Customer_id: 11,
+    First_Name: 'Partha',
+    Last_Name: 'sarathy',
+    dob: '20-03-2000',
+    Address: 'Udumalpet',
+    phone_number: 8080808080
+  },
+  {
+    _id: ObjectId("6533a22b1249ab48d6b15e4e"),
+    Customer_id: 12,
+    First_Name: 'Sumithra',
+    Last_Name: 'Devi',
+    dob: '20-04-2000',
+    Address: 'Karur',
+    phone_number: 7070707070
+  },
+  {
+    _id: ObjectId("6533a2621249ab48d6b15e4f"),
+    Customer_id: 13,
+    First_Name: 'Ashwith',
+    Last_Name: 'kumar',
+    dob: '20-05-2000',
+    Address: 'Thirunelveli',
+    phone_number: 6060606060
+  },
+  {
+    _id: ObjectId("6533a28e1249ab48d6b15e50"),
+    Customer_id: 14,
+    First_Name: 'Arun',
+    Last_Name: 'kumar',
+    dob: '20-06-2000',
+    Address: 'coimbatore',
+    phone_number: 5050505050
+  },
+  {
+    _id: ObjectId("6533a2ba1249ab48d6b15e51"),
+    Customer_id: 15,
+    First_Name: 'Pavi',
+    Last_Name: 'naya',
+    dob: '20-07-2000',
+    Address: 'Anaimalai',
+    phone_number: 4040404040
+  }
+]
+task1> db.student.find().pretty();
+[
+  {
+    _id: ObjectId("653395d61249ab48d6b15e45"),
+    Name: 'Sarah',
+    Age: 23,
+    Score: 98.2
+  },
+  {
+    _id: ObjectId("65339fd41249ab48d6b15e48"),
+    Name: 'Pavi',
+    Age: '20',
+    Score: 99.9
+  },
+  {
+    _id: ObjectId("65339fe31249ab48d6b15e49"),
+    Name: 'Diya',
+    Age: '10',
+    Score: 96.9
+  },
+  {
+    _id: ObjectId("6533a0021249ab48d6b15e4a"),
+    Name: 'Malar',
+    Age: '19',
+    Score: 86.9
+  },
+  {
+    _id: ObjectId("6533a0171249ab48d6b15e4b"),
+    Name: 'Kayal',
+    Age: '29',
+    Score: 97.9
+  },
+  {
+    _id: ObjectId("6533a0291249ab48d6b15e4c"),
+    Name: 'Divya',
+    Age: '18',
+    Score: 97.6
+  }
+]
+task1> use Employee
+switched to db Employee
+Employee> db.createCollection("emp_det")
+{ ok: 1 }
+Employee> db.emp_det.insertOne({Name:'Divya',Age:'28',dept:'manager'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a5241249ab48d6b15e57")
+}
+Employee> db.emp_det.insertOne({Name:'Hari',Age:'38',dept:'Analyst'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a5371249ab48d6b15e58")
+}
+Employee> db.emp_det.insertOne({Name:'Pavi',Age:'20',dept:'Programmer'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a5481249ab48d6b15e59")
+}
+Employee> db.emp_det.insertOne({Name:'Sarah',Age:'40',dept:'developer'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a55c1249ab48d6b15e5a")
+}
+Employee> db.emp_det.insertOne({Name:'Mythili',Age:'30',dept:'staff'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("6533a5801249ab48d6b15e5b")
+}
+Employee> db.emp_det.find().pretty()
+[
+  {
+    _id: ObjectId("6533a5241249ab48d6b15e57"),
+    Name: 'Divya',
+    Age: '28',
+    dept: 'manager'
+  },
+  {
+    _id: ObjectId("6533a5371249ab48d6b15e58"),
+    Name: 'Hari',
+    Age: '38',
+    dept: 'Analyst'
+  },
+  {
+    _id: ObjectId("6533a5481249ab48d6b15e59"),
+    Name: 'Pavi',
+    Age: '20',
+    dept: 'Programmer'
+  },
+  {
+    _id: ObjectId("6533a55c1249ab48d6b15e5a"),
+    Name: 'Sarah',
+    Age: '40',
+    dept: 'developer'
+  },
+  {
+    _id: ObjectId("6533a5801249ab48d6b15e5b"),
+    Name: 'Mythili',
+    Age: '30',
+    dept: 'staff'
+  }
+]
+
+Employee> db.emp_det.drop()
+true
+
+Employee> db.dropDatabase();
+{ ok: 1, dropped: 'Employee' }
+
+emp_det> show collections
+
+emp_det> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+task1   216.00 KiB
+emp_det>

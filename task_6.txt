@@ -1,0 +1,237 @@
+test> db
+test
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+task1   216.00 KiB
+task_2  144.00 KiB
+task_3    8.00 KiB
+task_4   56.00 KiB
+test> use task_4
+switched to db task_4
+task_4> show collections
+productDetails
+task_4> db.createCollection("customerDetails")
+{ ok: 1 }
+task_4> db.customerDetails.insertMany([{customer_id:1,name:'Aravindh',mob_number:9876543211,address:['Coimbatore','Udumalpet','Selam'],date:'03-03-2023'},{customer_id:2,name:'Karthick',mob_number:9876543678,address:['Coimbatore','Delhi','Trichy'],date:'02-01-2023'},{customer_id:3,name:'Sarathy',mob_number:9875553211,address:['Trichy','Karur','Selam'],date:'01-02-2003'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653e07fbb80b42d96f6fbd33"),
+    '1': ObjectId("653e07fbb80b42d96f6fbd34"),
+    '2': ObjectId("653e07fbb80b42d96f6fbd35")
+  }
+}
+task_4> db.customerDetails.updateMany({name:{$in:['Aravindh','Karthick']}},{$push:{address:{$each:["Tirunelveli","Tirupathi"]}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Coimbatore', 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Trichy', 'Tirunelveli', 'Tirupathi' ],
+    date: '02-01-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd35"),
+    customer_id: 3,
+    name: 'Sarathy',
+    mob_number: 9875553211,
+    address: [ 'Trichy', 'Karur', 'Selam' ],
+    date: '01-02-2003'
+  }
+]
+task_4> db.customerDetails.updateOne({name:'Aravindh'},{pop:{address:-1}})
+MongoInvalidArgumentError: Update document requires atomic operators
+task_4> db.customerDetails.updateOne({name:'Aravindh'},{$pop:{address:-1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Trichy', 'Tirunelveli', 'Tirupathi' ],
+    date: '02-01-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd35"),
+    customer_id: 3,
+    name: 'Sarathy',
+    mob_number: 9875553211,
+    address: [ 'Trichy', 'Karur', 'Selam' ],
+    date: '01-02-2003'
+  }
+]
+task_4> db.customerDetails.updateOne({name:'Karthick'},{$pop:{address:1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Trichy', 'Tirunelveli' ],
+    date: '02-01-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd35"),
+    customer_id: 3,
+    name: 'Sarathy',
+    mob_number: 9875553211,
+    address: [ 'Trichy', 'Karur', 'Selam' ],
+    date: '01-02-2003'
+  }
+]
+task_4> db.customerDetails.updateOne({name:'Karthick'},{$pull:{address:{$in:['Trichy']}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Tirunelveli' ],
+    date: '02-01-2023'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd35"),
+    customer_id: 3,
+    name: 'Sarathy',
+    mob_number: 9875553211,
+    address: [ 'Trichy', 'Karur', 'Selam' ],
+    date: '01-02-2003'
+  }
+]
+task_4> db.customerDetails.updateMany({},{$set:{Discount:'Aadi Sales'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023',
+    Discount: 'Aadi Sales'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Tirunelveli' ],
+    date: '02-01-2023',
+    Discount: 'Aadi Sales'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd35"),
+    customer_id: 3,
+    name: 'Sarathy',
+    mob_number: 9875553211,
+    address: [ 'Trichy', 'Karur', 'Selam' ],
+    date: '01-02-2003',
+    Discount: 'Aadi Sales'
+  }
+]
+task_4> db.customerDetails.deleteOne({customer_id:3})
+{ acknowledged: true, deletedCount: 1 }
+task_4> db.customerDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd33"),
+    customer_id: 1,
+    name: 'Aravindh',
+    mob_number: 9876543211,
+    address: [ 'Udumalpet', 'Selam', 'Tirunelveli', 'Tirupathi' ],
+    date: '03-03-2023',
+    Discount: 'Aadi Sales'
+  },
+  {
+    _id: ObjectId("653e07fbb80b42d96f6fbd34"),
+    customer_id: 2,
+    name: 'Karthick',
+    mob_number: 9876543678,
+    address: [ 'Coimbatore', 'Delhi', 'Tirunelveli' ],
+    date: '02-01-2023',
+    Discount: 'Aadi Sales'
+  }
+]
+task_4> db.customerDetails.deleteMany({ name: { $exists: true } }, { unique: true })
+{ acknowledged: true, deletedCount: 2 }
+task_4> db.customerDetails.find().pretty()
+
+task_4> db.customerDetails.drop()
+true
+task_4> db.dropDatabase();
+{ ok: 1, dropped: 'task_4' }
+task_4>

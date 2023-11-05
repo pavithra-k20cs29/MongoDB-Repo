@@ -1,0 +1,1453 @@
+test> db
+test
+test> show dbs
+admin    40.00 KiB
+config   72.00 KiB
+local    72.00 KiB
+task1   216.00 KiB
+task_2  112.00 KiB
+task_3    8.00 KiB
+test> use task_2
+switched to db task_2
+task_2> show collections
+student
+task_2
+task_2> db.student.find()
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  }
+]
+task_2> db.student.find({$and:[{m1:{ $gt: 70 } },{m2:{ $gt: 70 } },{m3:{ $gt: 70 } }]})
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  }
+]
+
+task_2> db.student.find().skip(2).limit(3)
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  }
+]
+task_2> db.student.find().sort({ dob: -1 })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  }
+]
+task_2> db.student.find().sort({ dob: 1 })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  }
+]
+task_2> db.student.find().sort({ name: -1 })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  }
+]
+task_2> db.student.find().sort({ name: 1 })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  }
+]
+task_2> db.student.find().skip(2).limit(2)
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  }
+]
+task_2> db.student.find().limit(2)
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  }
+]
+task_2> db.student.find({ "personal.age": { $not: { $gt: 21 } } })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  }
+]
+task_2> db.student.find({ subjects: { $in: ["HTML", "MongoDB"] } })
+[
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d57"),
+    name: 'kavin',
+    course: 'science',
+    m1: 88,
+    m2: 99,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-01-2001',
+      father_name: 'Prasath',
+      mob_number: 9078563412,
+      email_id: 'kavin00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d58"),
+    name: 'Selvi',
+    course: 'maths',
+    m1: 81,
+    m2: 92,
+    m3: 85,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '20-06-2001',
+      father_name: 'Hari',
+      mob_number: 9078563481,
+      email_id: 'selvi00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d59"),
+    name: 'Ragu',
+    course: 'physics',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '27-03-2001',
+      father_name: 'Larus',
+      mob_number: 7098563412,
+      email_id: 'ragu00@gmail.com',
+      address: 'Madurai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5a"),
+    name: 'Malar',
+    course: 'commerce',
+    m1: 84,
+    m2: 99,
+    m3: 89,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '29-01-2001',
+      father_name: 'kumar',
+      mob_number: 9078093412,
+      email_id: 'malar00@gmail.com',
+      address: 'Cuddalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5b"),
+    name: 'Kayal',
+    course: 'English',
+    m1: 87,
+    m2: 89,
+    m3: 87,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '20-08-2003',
+      father_name: 'prakash',
+      mob_number: 9908563412,
+      email_id: 'kayal00@gmail.com',
+      address: 'Trichy'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5c"),
+    name: 'Mithun',
+    course: 'Maths',
+    m1: 88,
+    m2: 79,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 21,
+      dob: '23-01-2000',
+      father_name: 'Siva',
+      mob_number: 9078563221,
+      email_id: 'mithun00@gmail.com',
+      address: 'Bangalore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5d"),
+    name: 'Kiran',
+    course: 'Commerce',
+    m1: 88,
+    m2: 91,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 22,
+      dob: '25-01-2001',
+      father_name: 'krish',
+      mob_number: 8078563412,
+      email_id: 'kiran00@gmail.com',
+      address: 'Selam'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5e"),
+    name: 'Pavi',
+    course: 'Computer science',
+    m1: 81,
+    m2: 90,
+    m3: 81,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 20,
+      dob: '22-07-2001',
+      father_name: 'kaleesh',
+      mob_number: 9078883412,
+      email_id: 'pavi00@gmail.com',
+      address: 'Coimbatore'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d5f"),
+    name: 'Sam',
+    course: 'maths',
+    m1: 85,
+    m2: 94,
+    m3: 83,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-09-2000',
+      father_name: 'Praveen',
+      mob_number: 9078563482,
+      email_id: 'sam00@gmail.com',
+      address: 'Chennai'
+    }
+  },
+  {
+    _id: ObjectId("6539d9ab496c19c36c6d2d60"),
+    name: 'Srikanth',
+    course: 'Tamil',
+    m1: 69,
+    m2: 92,
+    m3: 80,
+    subjects: [ 'HTML', 'CSS', 'MongoDB' ],
+    personal: {
+      age: 23,
+      dob: '20-05-2000',
+      father_name: 'Lisanth',
+      mob_number: 9008563412,
+      email_id: 'srikanth00@gmail.com',
+      address: 'Karur'
+    }
+  }
+]
+task_2> db.student.find({ $and: [{ m1: { $lt: 70 } }, { m1: { $gt:0}}] }, { _id:0, name: 1, course: 1 })
+[
+  {
+    name: 'Srikanth',
+    course: 'Tamil'
+  }
+]
+
+task_2> db.student.find({$and:[{ m1: { $lt: 70 } },{ m2: { $lt: 70 } },{ m3: { $lt: 70 } }]}, { name: 1, course: 1 })
+
+task_2>

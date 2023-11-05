@@ -1,0 +1,282 @@
+test> db
+test
+test> show dbs
+admin    40.00 KiB
+config   96.00 KiB
+local    72.00 KiB
+task1   216.00 KiB
+task_2  112.00 KiB
+task_3    8.00 KiB
+test> use task_4
+switched to db task_4
+task_4> db.createCollection("productDetails")
+task_4> db.productDetails.insertMany([{product_id:1,product_name:'iphone 11',price:2000,no_of_quantity:10,company:{name:'Apple',purchase_date:'20-01-2023'}},{product_id:2,product_name:'iphone 11',price:2000,no_of_quantity:7,company:{name:'Apple',purchase_date:'18-07-2023'}},{product_id:3,product_name:'Vivi Y20',price:900,no_of_quantity:9,company:{name:'Vivo',purchase_date:'11-04-2023'}},{product_id:4,product_name:'iphone 11',price:2000,no_of_quantity:3,company:{name:'Apple',purchase_date:'12-02-2023'}},{product_id:5,product_name:'Redmi',price:2500,no_of_quantity:6,company:{name:'Redmi',purchase_date:'07-01-2023'}},{product_id:6,product_name:'iphone 11',price:2000,no_of_quantity:1,company:{name:'Apple',purchase_date:'11-04-2023'}},{product_id:7,product_name:'iphone 11',price:2000,no_of_quantity:2,company:{name:'Apple',purchase_date:'19-05-2023'}},{product_id:8,product_name:'Oppo A15s',price:1000,no_of_quantity:5,company:{name:'Oppo',purchase_date:'18-02-2023'}},{product_id:9,product_name:'Samsung S15',price:600,no_of_quantity:3,company:{name:'Samsung',purchase_date:'15-07-2023'}},{product_id:10,product_name:'Redmi K11',price:800,no_of_quantity:2,company:{name:'Redmi',purchase_date:'11-04-2023'}},{product_id:11,product_name:'Galaxy s12',price:1800,no_of_quantity:5,company:{name:'Samsung',purchase_date:'17-09-2023'}},{product_id:12,product_name:'Redmi K11',price:1400,no_of_quantity:2,company:{name:'Redmi',purchase_date:'01-01-2023'}}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("653cd6f1ee80460e509ad02d"),
+    '1': ObjectId("653cd6f1ee80460e509ad02e"),
+    '2': ObjectId("653cd6f1ee80460e509ad02f"),
+    '3': ObjectId("653cd6f1ee80460e509ad030"),
+    '4': ObjectId("653cd6f1ee80460e509ad031"),
+    '5': ObjectId("653cd6f1ee80460e509ad032"),
+    '6': ObjectId("653cd6f1ee80460e509ad033"),
+    '7': ObjectId("653cd6f1ee80460e509ad034"),
+    '8': ObjectId("653cd6f1ee80460e509ad035"),
+    '9': ObjectId("653cd6f1ee80460e509ad036"),
+    '10': ObjectId("653cd6f1ee80460e509ad037"),
+    '11': ObjectId("653cd6f1ee80460e509ad038")
+  }
+}
+task_4> db.productDetails.find().pretty()
+[
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad02d"),
+    product_id: 1,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 10,
+    company: { name: 'Apple', purchase_date: '20-01-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad02e"),
+    product_id: 2,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 7,
+    company: { name: 'Apple', purchase_date: '18-07-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad02f"),
+    product_id: 3,
+    product_name: 'Vivi Y20',
+    price: 900,
+    no_of_quantity: 9,
+    company: { name: 'Vivo', purchase_date: '11-04-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad030"),
+    product_id: 4,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 3,
+    company: { name: 'Apple', purchase_date: '12-02-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad031"),
+    product_id: 5,
+    product_name: 'Redmi',
+    price: 2500,
+    no_of_quantity: 6,
+    company: { name: 'Redmi', purchase_date: '07-01-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad032"),
+    product_id: 6,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 1,
+    company: { name: 'Apple', purchase_date: '11-04-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad033"),
+    product_id: 7,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 2,
+    company: { name: 'Apple', purchase_date: '19-05-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad034"),
+    product_id: 8,
+    product_name: 'Oppo A15s',
+    price: 1000,
+    no_of_quantity: 5,
+    company: { name: 'Oppo', purchase_date: '18-02-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad035"),
+    product_id: 9,
+    product_name: 'Samsung S15',
+    price: 600,
+    no_of_quantity: 3,
+    company: { name: 'Samsung', purchase_date: '15-07-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad036"),
+    product_id: 10,
+    product_name: 'Redmi K11',
+    price: 800,
+    no_of_quantity: 2,
+    company: { name: 'Redmi', purchase_date: '11-04-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad037"),
+    product_id: 11,
+    product_name: 'Galaxy s12',
+    price: 1800,
+    no_of_quantity: 5,
+    company: { name: 'Samsung', purchase_date: '17-09-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad038"),
+    product_id: 12,
+    product_name: 'Redmi K11',
+    price: 1400,
+    no_of_quantity: 2,
+    company: { name: 'Redmi', purchase_date: '01-01-2023' }
+  }
+]
+task_4> db.productDetails.find({ product_name: "iphone 11" }).limit(5);
+[
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad02d"),
+    product_id: 1,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 10,
+    company: { name: 'Apple', purchase_date: '20-01-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad02e"),
+    product_id: 2,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 7,
+    company: { name: 'Apple', purchase_date: '18-07-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad030"),
+    product_id: 4,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 3,
+    company: { name: 'Apple', purchase_date: '12-02-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad032"),
+    product_id: 6,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 1,
+    company: { name: 'Apple', purchase_date: '11-04-2023' }
+  },
+  {
+    _id: ObjectId("653cd6f1ee80460e509ad033"),
+    product_id: 7,
+    product_name: 'iphone 11',
+    price: 2000,
+    no_of_quantity: 2,
+    company: { name: 'Apple', purchase_date: '19-05-2023' }
+  }
+]
+task_4> db.productDetails.aggregate([{$group:{_id:"$companyName",products:{$push:{product_name:"$product_name",company:"$company.name",no_of_quantity:"$no_of_quantity"}}}}])
+[
+  {
+    _id: null,
+    products: [
+      {
+        product_name: 'iphone 11',
+        company: 'Apple',
+        no_of_quantity: 10
+      },
+      {
+        product_name: 'iphone 11',
+        company: 'Apple',
+        no_of_quantity: 7
+      },
+      { product_name: 'Vivi Y20', company: 'Vivo', no_of_quantity: 9 },
+      {
+        product_name: 'iphone 11',
+        company: 'Apple',
+        no_of_quantity: 3
+      },
+      { product_name: 'Redmi', company: 'Redmi', no_of_quantity: 6 },
+      {
+        product_name: 'iphone 11',
+        company: 'Apple',
+        no_of_quantity: 1
+      },
+      {
+        product_name: 'iphone 11',
+        company: 'Apple',
+        no_of_quantity: 2
+      },
+      { product_name: 'Oppo A15s', company: 'Oppo', no_of_quantity: 5 },
+      {
+        product_name: 'Samsung S15',
+        company: 'Samsung',
+        no_of_quantity: 3
+      },
+      {
+        product_name: 'Redmi K11',
+        company: 'Redmi',
+        no_of_quantity: 2
+      },
+      {
+        product_name: 'Galaxy s12',
+        company: 'Samsung',
+        no_of_quantity: 5
+      },
+      {
+        product_name: 'Redmi K11',
+        company: 'Redmi',
+        no_of_quantity: 2
+      }
+    ]
+  }
+]
+task_4> db.productDetails.aggregate([{$group:{_id:0,totalSum:{$sum:"$price"}}}])
+[ { _id: 0, totalSum: 19000 } ]
+
+task_4> db.productDetails.aggregate([{$group:{_id:0,products:{$push:{product_name:"$product_name",totalSum:{$sum:"$price"}}}}}])
+[
+  {
+    _id: 0,
+    products: [
+      { product_name: 'iphone 11', totalSum: 2000 },
+      { product_name: 'iphone 11', totalSum: 2000 },
+      { product_name: 'Vivi Y20', totalSum: 900 },
+      { product_name: 'iphone 11', totalSum: 2000 },
+      { product_name: 'Redmi', totalSum: 2500 },
+      { product_name: 'iphone 11', totalSum: 2000 },
+      { product_name: 'iphone 11', totalSum: 2000 },
+      { product_name: 'Oppo A15s', totalSum: 1000 },
+      { product_name: 'Samsung S15', totalSum: 600 },
+      { product_name: 'Redmi K11', totalSum: 800 },
+      { product_name: 'Galaxy s12', totalSum: 1800 },
+      { product_name: 'Redmi K11', totalSum: 1400 }
+    ]
+  }
+]
+task_4> db.productDetails.aggregate([{$group:{_id:"$product_name","totalSum":{$sum:"$price"}}}])
+[
+  { _id: 'iphone 11', totalSum: 10000 },
+  { _id: 'Redmi K11', totalSum: 2200 },
+  { _id: 'Vivi Y20', totalSum: 900 },
+  { _id: 'Redmi', totalSum: 2500 },
+  { _id: 'Samsung S15', totalSum: 600 },
+  { _id: 'Galaxy s12', totalSum: 1800 },
+  { _id: 'Oppo A15s', totalSum: 1000 }
+]
+task_4> db.productDetails.aggregate([{$group:{_id:"$product_name","totalSum":{$sum:"$price"},"AveragePrice":{$avg:"$price"}}}])
+[
+  { _id: 'Oppo A15s', totalSum: 1000, AveragePrice: 1000 },
+  { _id: 'Redmi K11', totalSum: 2200, AveragePrice: 1100 },
+  { _id: 'Galaxy s12', totalSum: 1800, AveragePrice: 1800 },
+  { _id: 'Vivi Y20', totalSum: 900, AveragePrice: 900 },
+  { _id: 'Redmi', totalSum: 2500, AveragePrice: 2500 },
+  { _id: 'Samsung S15', totalSum: 600, AveragePrice: 600 },
+  { _id: 'iphone 11', totalSum: 10000, AveragePrice: 2000 }
+]
+task_4> db.productDetails.aggregate([{$group: {"_id": "$product_name"}}, {$sort: {"company.name":1}}])
+[
+  { _id: 'iphone 11' },
+  { _id: 'Redmi K11' },
+  { _id: 'Vivi Y20' },
+  { _id: 'Redmi' },
+  { _id: 'Samsung S15' },
+  { _id: 'Galaxy s12' },
+  { _id: 'Oppo A15s' }
+]
+task_4>
